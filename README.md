@@ -8,22 +8,23 @@ Sonnet 4.5 │ ~/projects │ main ✓ │ $0.45/$15 │ 🧠 ON (⇥) │ 📋 
 
 ## Installation
 
-**Step 1:** Add the marketplace
+**Step 1:** Add the marketplace and install
 ```bash
 /plugin marketplace add anuragthakur77/claude-comprehensive-statusline
-```
-
-**Step 2:** Install the plugin
-```bash
 /plugin install comprehensive-statusline@comprehensive-statusline-marketplace
 ```
 
-**Step 3:** Run the setup command
-```bash
-/setup
+**Step 2:** Add this line to your `~/.claude/settings.json`:
+```json
+{
+  "statusLine": {
+    "type": "command",
+    "command": "bash ~/.claude/plugins/marketplaces/comprehensive-statusline-marketplace/statusline.sh"
+  }
+}
 ```
 
-That's it! The statusline will now appear at the bottom of your terminal.
+That's it! Restart Claude Code and the statusline will appear.
 
 ## Features
 
