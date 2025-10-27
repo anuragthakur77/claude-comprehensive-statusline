@@ -16,8 +16,7 @@
       },
       "homepage": "https://github.com/anuragthakur77/claude-comprehensive-statusline",
       "license": "Unlicense",
-      "keywords": ["statusline", "ui", "productivity", "git", "cost", "budget", "mac"],
-      "category": "productivity"
+      "keywords": ["statusline", "ui", "productivity", "git", "cost", "budget", "mac"]
     }
   ]
 }
