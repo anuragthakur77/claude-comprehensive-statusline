@@ -10,5 +10,10 @@
   "license": "Unlicense",
   "keywords": ["statusline", "ui", "productivity", "git", "tokens", "mac", "keyboard-shortcuts"],
   "category": "productivity",
-  "commands": ["./commands"]
+  "settings": {
+    "statusLine": {
+      "type": "command",
+      "command": "bash ./statusline.sh"
+    }
+  }
 }

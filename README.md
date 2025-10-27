@@ -1,21 +1,22 @@
 # Comprehensive Statusline for Claude Code
 
-Feature-rich statusline with model, directory, git, tokens, thinking mode, and current mode.
+Feature-rich statusline with model, directory, git, session cost, thinking mode, and current mode.
 
 ```
-Sonnet 4.5 │ ~/projects │ main ✓ │ T: 45K/200K │ 🧠 ON (⇥ Tab) │ 📋 PLAN (⇧⇥)
+Sonnet 4.5 │ ~/projects │ main ✓ │ $0.45/$15 │ 🧠 ON (⇥ Tab) │ 📋 PLAN (⇧⇥)
 ```
 
 ## Installation
 
 ```bash
 /plugin install anuragthakur77/claude-comprehensive-statusline
-/install-statusline
 ```
+
+That's it! The statusline activates automatically after installation.
 
 ## Features
 
-- Real token usage from transcript (color-coded)
+- Session cost tracking vs budget (color-coded: $0.45/$15)
 - Git branch with clean/dirty status
 - Thinking mode toggle (⇥ Tab)
 - Current mode with switch shortcut (⇧⇥)

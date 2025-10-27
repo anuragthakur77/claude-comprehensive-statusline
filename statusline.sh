@@ -29,38 +29,38 @@ else
     dir_name=$(echo "$current_dir" | rev | cut -d'/' -f1,2 | rev)
 fi
 
-# Parse REAL token usage from transcript JSONL file
-token_info=""
-if [ -n "$transcript_path" ] && [ -f "$transcript_path" ]; then
-    # Sum up all input_tokens and output_tokens from the transcript
-    total_tokens=$(jq -s 'map(select(.message.usage != null) | .message.usage | (.input_tokens // 0) + (.output_tokens // 0)) | add // 0' "$transcript_path" 2>/dev/null)
+# Get cost data from JSON (more reliable than manual token calculation)
+cost_usd=$(echo "$input" | jq -r '.cost.total_cost_usd // empty' 2>/dev/null)
 
-    if [ -n "$total_tokens" ] && [ "$total_tokens" -gt 0 ]; then
-        context_window=200000
-
-        # Calculate percentage
-        percentage=$(echo "scale=0; ($total_tokens * 100) / $context_window" | bc -l 2>/dev/null || echo "0")
-
-        # Convert to K notation (thousands)
-        # Divide by 1000 and round to 1 decimal if needed, otherwise whole number
-        tokens_k=$(echo "scale=1; $total_tokens / 1000" | bc -l 2>/dev/null || echo "0")
-        window_k=$(echo "scale=1; $context_window / 1000" | bc -l 2>/dev/null || echo "0")
-
-        # Remove trailing .0 for whole numbers
-        tokens_k=$(echo "$tokens_k" | sed 's/\.0$//')
-        window_k=$(echo "$window_k" | sed 's/\.0$//')
-
-        # Color code based on usage
-        if [ "$percentage" -ge 80 ]; then
-            token_color="\033[31m"  # red
-        elif [ "$percentage" -ge 60 ]; then
-            token_color="\033[33m"  # yellow
-        else
-            token_color="\033[32m"  # green
-        fi
-
-        token_info=$(printf " \033[35m│\033[0m %bT: %sK/%sK\033[0m" "$token_color" "$tokens_k" "$window_k")
+# Cost/usage info - show session cost with estimated budget
+cost_info=""
+if [ -n "$cost_usd" ] && [ "$cost_usd" != "null" ]; then
+    # Format cost with 2-4 decimal places depending on magnitude
+    if (( $(echo "$cost_usd >= 1" | bc -l 2>/dev/null || echo "0") )); then
+        cost_display=$(printf "%.2f" "$cost_usd")
+    elif (( $(echo "$cost_usd >= 0.01" | bc -l 2>/dev/null || echo "0") )); then
+        cost_display=$(printf "%.3f" "$cost_usd")
+    else
+        cost_display=$(printf "%.4f" "$cost_usd")
     fi
+
+    # Estimated session budget (adjust based on your needs)
+    # Conservative estimate: ~$15-20 for a full 200K token session
+    budget_limit=15
+
+    # Calculate percentage of budget used
+    cost_percent=$(echo "scale=0; ($cost_usd * 100) / $budget_limit" | bc -l 2>/dev/null || echo "0")
+
+    # Color code based on cost percentage
+    if [ "$cost_percent" -ge 80 ]; then
+        cost_color="\033[31m"  # red
+    elif [ "$cost_percent" -ge 60 ]; then
+        cost_color="\033[33m"  # yellow
+    else
+        cost_color="\033[32m"  # green
+    fi
+
+    cost_info=$(printf " \033[35m│\033[0m %b\$%s/\$%d\033[0m" "$cost_color" "$cost_display" "$budget_limit")
 fi
 
 # Git information
@@ -131,4 +131,4 @@ else
 fi
 
 # Build and print the status line
-printf "\033[1m\033[34m%s\033[0m \033[35m│\033[0m \033[32m%s\033[0m%b%b%b%b\n" "$model" "$dir_name" "$git_info" "$token_info" "$warning_info" "$thinking_info"
+printf "\033[1m\033[34m%s\033[0m \033[35m│\033[0m \033[32m%s\033[0m%b%b%b%b\n" "$model" "$dir_name" "$git_info" "$cost_info" "$warning_info" "$thinking_info"
