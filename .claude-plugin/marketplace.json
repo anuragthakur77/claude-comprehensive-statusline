@@ -8,7 +8,7 @@
     {
       "name": "comprehensive-statusline",
       "source": "./",
-      "description": "Feature-rich statusline with model, directory, git, tokens, thinking mode, and current mode with Mac shortcuts",
+      "description": "Feature-rich statusline with model, directory, git, session cost, thinking mode, and current mode with Mac shortcuts",
       "version": "1.0.0",
       "author": {
         "name": "Anurag Thakur",
@@ -16,7 +16,7 @@
       },
       "homepage": "https://github.com/anuragthakur77/claude-comprehensive-statusline",
       "license": "Unlicense",
-      "keywords": ["statusline", "ui", "productivity", "git", "tokens", "mac"],
+      "keywords": ["statusline", "ui", "productivity", "git", "cost", "budget", "mac"],
       "category": "productivity"
     }
   ]

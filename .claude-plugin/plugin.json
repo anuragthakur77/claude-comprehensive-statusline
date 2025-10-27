@@ -1,14 +1,14 @@
 {
   "name": "comprehensive-statusline",
   "version": "1.0.0",
-  "description": "A comprehensive, feature-rich statusline for Claude Code showing model, directory, git status, tokens, thinking mode, and current mode with Mac-style keyboard shortcuts",
+  "description": "A comprehensive, feature-rich statusline for Claude Code showing model, directory, git status, session cost, thinking mode, and current mode with Mac-style keyboard shortcuts",
   "author": {
     "name": "Anurag Thakur",
     "github": "anuragthakur77"
   },
   "homepage": "https://github.com/anuragthakur77/claude-comprehensive-statusline",
   "license": "Unlicense",
-  "keywords": ["statusline", "ui", "productivity", "git", "tokens", "mac", "keyboard-shortcuts"],
+  "keywords": ["statusline", "ui", "productivity", "git", "cost", "budget", "mac", "keyboard-shortcuts"],
   "category": "productivity",
   "settings": {
     "statusLine": {
