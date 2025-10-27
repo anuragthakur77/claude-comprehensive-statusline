@@ -120,14 +120,14 @@ if [ -f "$settings_file" ]; then
     thinking_enabled=$(jq -r '.alwaysThinkingEnabled // false' "$settings_file" 2>/dev/null)
     if [ "$thinking_enabled" = "true" ]; then
         # ON state - yellow/blue color
-        thinking_info=$(printf " \033[35m│\033[0m \033[33m🧠 ON\033[0m \033[36m(⇥ Tab)\033[0m \033[35m│\033[0m %b" "$mode_info")
+        thinking_info=$(printf " \033[35m│\033[0m \033[33m🧠 ON\033[0m \033[36m(⇥)\033[0m \033[35m│\033[0m %b" "$mode_info")
     else
         # OFF state - green color
-        thinking_info=$(printf " \033[35m│\033[0m \033[32m🧠 OFF\033[0m \033[36m(⇥ Tab)\033[0m \033[35m│\033[0m %b" "$mode_info")
+        thinking_info=$(printf " \033[35m│\033[0m \033[32m🧠 OFF\033[0m \033[36m(⇥)\033[0m \033[35m│\033[0m %b" "$mode_info")
     fi
 else
     # Default to OFF if settings file not found
-    thinking_info=$(printf " \033[35m│\033[0m \033[32m🧠 OFF\033[0m \033[36m(⇥ Tab)\033[0m \033[35m│\033[0m %b" "$mode_info")
+    thinking_info=$(printf " \033[35m│\033[0m \033[32m🧠 OFF\033[0m \033[36m(⇥)\033[0m \033[35m│\033[0m %b" "$mode_info")
 fi
 
 # Build and print the status line

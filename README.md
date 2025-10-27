@@ -3,7 +3,7 @@
 Feature-rich statusline with model, directory, git, session cost, thinking mode, and current mode.
 
 ```
-Sonnet 4.5 │ ~/projects │ main ✓ │ $0.45/$15 │ 🧠 ON (⇥ Tab) │ 📋 PLAN (⇧⇥)
+Sonnet 4.5 │ ~/projects │ main ✓ │ $0.45/$15 │ 🧠 ON (⇥) │ 📋 PLAN (⇧⇥)
 ```
 
 ## Installation
@@ -18,7 +18,7 @@ That's it! The statusline activates automatically after installation.
 
 - Session cost tracking vs budget (color-coded: $0.45/$15)
 - Git branch with clean/dirty status
-- Thinking mode toggle (⇥ Tab)
+- Thinking mode toggle (⇥)
 - Current mode with switch shortcut (⇧⇥)
 - Smart directory paths with ~ shorthand
 
