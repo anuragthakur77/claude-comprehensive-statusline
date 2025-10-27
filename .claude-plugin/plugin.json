@@ -9,16 +9,5 @@
   "homepage": "https://github.com/anuragthakur77/claude-comprehensive-statusline",
   "license": "Unlicense",
   "keywords": ["statusline", "ui", "productivity", "git", "cost", "budget", "mac", "keyboard-shortcuts"],
-  "hooks": {
-    "SessionStart": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "bash ${CLAUDE_PLUGIN_ROOT}/hooks/setup.sh"
-          }
-        ]
-      }
-    ]
-  }
+  "commands": "./commands"
 }

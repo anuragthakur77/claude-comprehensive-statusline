@@ -8,11 +8,22 @@ Sonnet 4.5 │ ~/projects │ main ✓ │ $0.45/$15 │ 🧠 ON (⇥) │ 📋 
 
 ## Installation
 
+**Step 1:** Add the marketplace
 ```bash
-/plugin install anuragthakur77/claude-comprehensive-statusline
+/plugin marketplace add anuragthakur77/claude-comprehensive-statusline
 ```
 
-That's it! The statusline activates automatically after installation.
+**Step 2:** Install the plugin
+```bash
+/plugin install comprehensive-statusline@comprehensive-statusline-marketplace
+```
+
+**Step 3:** Run the setup command
+```bash
+/setup
+```
+
+That's it! The statusline will now appear at the bottom of your terminal.
 
 ## Features
 
